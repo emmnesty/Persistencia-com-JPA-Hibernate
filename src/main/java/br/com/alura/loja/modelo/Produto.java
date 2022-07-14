@@ -13,6 +13,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "produtos")
 public class Produto {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -25,11 +26,9 @@ public class Produto {
 	private Categoria categoria;
 	
 	public Produto() {
-
 	}
-
+	
 	public Produto(String nome, String descricao, BigDecimal preco, Categoria categoria) {
-		super();
 		this.nome = nome;
 		this.descricao = descricao;
 		this.preco = preco;

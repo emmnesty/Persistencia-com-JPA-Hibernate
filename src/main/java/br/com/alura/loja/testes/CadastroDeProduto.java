@@ -11,25 +11,26 @@ import br.com.alura.loja.modelo.Categoria;
 import br.com.alura.loja.modelo.Produto;
 import br.com.alura.loja.util.JPAUtil;
 
-public class CadastroDeProdutos {
-
+public class CadastroDeProduto {
+	
 	public static void main(String[] args) {
 		cadastrarProduto();
 		EntityManager em = JPAUtil.getEntityManager();
 		ProdutoDao produtoDao = new ProdutoDao(em);
 		
 		Produto p = produtoDao.buscarPorId(1l);
+		System.out.println(p.getPreco());
 		
-		 List<Produto> todos = produtoDao.buscarPorNomeCategoria("CELULARES");
-		 todos.forEach(p2 -> System.out.println(p.getNome()));
-		
+		List<Produto> todos = produtoDao.buscarPorNomeDaCategoria("CELULARES");
+		todos.forEach(p2 -> System.out.println(p.getNome()));
+	
+		BigDecimal precoDoProduto = produtoDao.buscarPrecoDoProdutoComNome("Xiaomi Redmi");
+		System.out.println("Preco do Produto: " +precoDoProduto);
 	}
 
 	private static void cadastrarProduto() {
 		Categoria celulares = new Categoria("CELULARES");
-		
-		
-		Produto celular = new Produto("Xiaomi Redmi", "Celular lindo sqn", new BigDecimal("800"), celulares);
+		Produto celular = new Produto("Xiaomi Redmi", "Muito legal", new BigDecimal("800"), celulares );
 		
 		EntityManager em = JPAUtil.getEntityManager();
 		ProdutoDao produtoDao = new ProdutoDao(em);
@@ -43,4 +44,5 @@ public class CadastroDeProdutos {
 		em.getTransaction().commit();
 		em.close();
 	}
+
 }
