@@ -10,6 +10,10 @@ import javax.persistence.Table;
 @Table(name = "categoria")
 public class Categoria {
 
+	public Categoria() {
+
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
