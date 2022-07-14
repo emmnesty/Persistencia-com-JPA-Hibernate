@@ -30,5 +30,4 @@ public class CadastroDeProdutos {
 		em.getTransaction().commit();
 		em.close();
 	}
-
 }
