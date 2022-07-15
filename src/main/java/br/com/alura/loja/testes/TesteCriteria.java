@@ -48,4 +48,5 @@ public class TesteCriteria {
 		em.getTransaction().commit();
 		em.close();
 	}
+	
 }
